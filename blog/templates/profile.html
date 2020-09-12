@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock title %}
+{% block profileactive %}active{% endblock profileactive %}
+{% block content %}
+
+<div class="container visible-xs">
+    <p class="text-right">Hii {{request.user.first_name|capfirst}} {{request.user.last_name|capfirst}}</p>
+    <h5 class="text-center">username:-{{request.user}}</h5>
+
+    {% if pic_bio is None %}
+    No data
+    {% else %}
+    {% for x in pic_bio %}
+    <img src="{{x.pic.url}}" class="rounded img-fluid mx-auto d-block" alt="{{x.uname}}">
+    <br><br>
+    <h6 class='text-center'><small>bio:-</small><br>{{x.bio}}</h6>
+    <br>
+    {% endfor %}
+    {% endif %}
+
+    {% for blog in all_blog %}<br>
+    <table class="table table-bordered table-sm">
+        <h6 class="text-right"><small class="form-text text-muted">{{blog.date|date:"g:ia.M j"}}</small></h6>
+        <tr>
+            <small class="form-text text-muted">titile:-</small>
+            <td>{{ blog.title|capfirst }}</td>
+        </tr>
+    </table>
+    <table class="table table-bordered table-resposive-sm">
+        <tr>
+            <small class="form-text text-muted">blog:-</small>
+            <td>{{ blog.text|capfirst }} </td>
+        </tr>
+    </table>
+    <h6 class="text-right"><a href="{% url 'delete_post' blog.id %}" class="btn btn-primary btn-sm" role="button">Delete</a></h6>
+    {% empty %}
+    there is no post available
+    {% endfor%}
+</div>
+{% endblock content %}

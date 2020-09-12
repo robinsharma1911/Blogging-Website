@@ -1,0 +1,37 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block content %}
+
+<div class="container visible-xs">
+    <h2>About</h2>
+    <small>Robin Sharma</small><br>
+    This is only a practise.So,you can find some errors in it.
+    You can see anyone profile without having account in it. but to create a blog you need to create account.
+    <br>
+    we can click on the mysite text above the site to goto the home page.
+    <br><br>
+    <b>All functions:-</b>
+    <br>
+    <img src="{% static 'mysite_func.png' %}" class="rounded img-fluid mx-auto d-block border" alt="functions">
+    <br><br>
+    <b>Add blog:-</b>
+    <br>
+    <img src="{% static 'add_blog.png' %}" class="rounded img-fluid mx-auto d-block border" alt="blog">
+    <br><br>
+    <b>Edit profile pic and bio:-</b>
+    <br>
+    <img src="{% static 'edit_pic.png' %}" class="rounded img-fluid mx-auto d-block border" alt="pic">
+    <br><br>
+    <b>profile page1</b>
+    <br>
+    <img src="{% static 'profile1.png' %}" class="rounded img-fluid mx-auto d-block border" alt="profile1">
+    <br><br>
+    <b>profile page2</b>
+    <br>
+    <img src="{% static 'profile2.png' %}" class="rounded img-fluid mx-auto d-block border" alt="profile2">
+    <br>
+</div>
+
+{% endblock content %}

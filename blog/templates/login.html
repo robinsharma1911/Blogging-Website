@@ -1,0 +1,35 @@
+{% extends 'base2.html' %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+
+<div class="container visible-xs">
+  <h3 class="text-center">login</h3><br>
+  <form method='POST' action=''>
+    <div class="form-group">
+      {% csrf_token %}
+      <label for="exampleInputUsername">username:-</label>
+      <input type="text" name='username' placeholder="username" class="form-control" id="exampleInputEmail1"
+        aria-describedby="emailHelp" required>
+    </div>
+
+    <!-- script to show and hide password it use checkbox button -->
+    <script type="text/javascript">
+      function reveal() {
+        if (document.getElementById('box').checked) { document.getElementById("pw").type = 'text'; }
+        else
+          document.getElementById("pw").type = 'password';
+      }
+    </script>
+
+    <div class="form-group">
+      <label for="exampleInputPassword">Password:-</label>
+      <input type="password" name='password' placeholder="password" class="form-control" id="pw" required>
+    </div>
+    <input type="checkbox" id="box" onclick="reveal()">
+    <label for="pw">show password</label>
+    <button type="submit" value='submit' class="btn btn-primary btn-block">login</button>
+  </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Add Blog{% endblock title %}
+{% block addblogactive %}active
+{% endblock addblogactive %}
+{% block content %}
+
+<h1 class="text-center">Add Blog</h1><br>
+<div class="container visible-xs">
+    <form action="" method="POST" id="blog">
+        {% csrf_token%}
+        <small>title:-</small><br>
+        <input type="text" class="form-control" maxlength="50" name=title placeholder="enter title..." required><br>
+        <small>blog:-</small>
+        <textarea class="form-control" name="desc" rows="8" placeholder="enter blog..." required>
+        </textarea><br>
+        <input type="submit" value="POST" class="btn btn-primary btn-block">
+    </form>
+</div>
+
+{% endblock content %}

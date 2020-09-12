@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}mysite{% endblock title %}
+{% block content %}
+<div class="container visible-xs">
+    
+  
+    {% if userp.pic %}
+    <img src="{{userp.pic.url}}" class="rounded img-fluid mx-auto d-block" alt="{{userp.uname}}">
+    {% endif %}
+    {% if userx.username %}
+    <h6 class="text-center">{{userx.username}}</h6> 
+    {% endif %}
+    {% if userp.bio %}
+    <h6 class='text-center'><small>bio:-</small><br>{{userp.bio}}</h6>
+    {% endif %}  
+  
+
+
+    {% if all_blog is None %}
+    <h2>there is no post</h2>
+    {% else %}
+    <br><br>
+    {% for blog in all_blog %}
+    <table class="table table-bordered table-sm">
+        <p class="text-right"><small class="form-text text-muted">{{blog.date|date:"g:ia.M j"}}</small></p>
+        <tr>
+            <small class="form-text text-muted">title:-</small>
+            <td>{{ blog.title|capfirst }}</td>
+        </tr>
+    </table>
+    <table class="table table-bordered table-responsive-sm">
+        <tr>
+        <small class="form-text text-muted">blog:-</small>
+            <td>{{ blog.text|capfirst }} </td>
+        </tr>
+    </table>
+    <br>
+    {% empty %}
+    there is no post available
+    {% endfor%}
+    {% endif %}
+</div>
+{% endblock content %}

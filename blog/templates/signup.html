@@ -1,0 +1,59 @@
+{% extends 'base2.html' %}
+{% block title %}Signup{% endblock title %}
+
+{% block content %}
+<div class="container visible-xs">
+  <h4 class="text-center">Signup</h4><br>
+
+  <form method='POST' action=''>
+    {% csrf_token %}
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label for="InputFirst">first name:-</label>
+          <input type="text" name='first_name' placeholder="first name" class="form-control form-control-sm"
+            id="InputFirst" required>
+        </div>
+        <div class="col">
+          <label for="InputLast">last name:-</label>
+          <input type="text" name='last_name' placeholder="last name" class="form-control form-control-sm"
+            id="InputLast" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="InputUsername">username:-</label>
+      <input type="text" name='username' placeholder="username" class="form-control form-control-sm"
+        id="InputUsername" required>
+      <small id="UsernameHelp" class="form-text text-muted">username should be unquie:-</small>
+    </div>
+
+    <div class="form-group">
+      <label for="InputEmail">email:-</label>
+      <input type="email" name='email' placeholder="email" class="form-control form-control-sm" id="InputEmail"
+        required>
+    </div>
+
+    <!-- to show and hide password it use checkbox button -->
+    <script type="text/javascript">
+      function reveal() {
+        if (document.getElementById('box').checked) { document.getElementById("pw").type = 'text'; }
+        else
+          document.getElementById("pw").type = 'password';
+      }
+    </script>
+
+    <div class="form-group">
+      <label for="InputPassword">Password:-</label>
+      <input type="password" name='password' placeholder="password" class="form-control form-control-sm" id="pw"
+        required>
+      <input type="checkbox" id="box" onclick="reveal()">
+      <label for="pw">show password</label>
+      <br><br>
+      <button type="submit" value='submit' class="btn btn-primary btn-block">create new account</button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

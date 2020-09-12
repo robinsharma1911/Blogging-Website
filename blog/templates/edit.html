@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile{% endblock title %}
+{% block content %}
+<center>{{request.user}}</center>
+<div class="container visible-xs">
+
+   {% if pic_bio %}
+   {% for x in pic_bio %}
+
+   <img src="{{x.pic.url}}" class="rounded img-fluid mx-auto d-block" alt="Invaild media file use pictures">
+   {{x.bio}}
+   <h6 class="text-right"><a href="{% url 'delete_bio' x.bio %}" class="btn btn-primary btn-sm" role="button">Delete</a>
+   </h6>
+
+   {% endfor %}
+   {% else %}
+
+   <form method='POST' action='' enctype="multipart/form-data">
+      {% csrf_token %}
+      <br><br>
+      <label for="Profile">profile_pic:-</label>
+      <input type="file" name='user_pic' id="Profile_pic" required>
+      <br><br>
+      <div class="form-group">
+         <label for="user_bio">user_bio:-</label>
+         <input type="text" name='user_bio' placeholder="bio..." class="form-control" id="user_bio" required>
+         <small id="user_bio" class="form-text text-muted">Both fields are required:-</small>
+      </div>
+      <input type="submit" value='submit' class="btn btn-secondary">
+   </form>
+   {% endif %}
+
+</div>
+{% endblock content %}

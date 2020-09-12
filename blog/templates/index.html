@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}home{% endblock title %}
+{% block indexactive %}active
+{% endblock indexactive %}
+{% block content %}
+
+<div class="container visible-xs">
+    <h2 class="text-center">blogs</h2><br>
+
+    {% for blog in all_blog %}
+    
+    <table class="table table-bordered table-sm">
+        <h6 class="text-right"><small class="form-text text-muted">{{blog.date|date:"g:ia.M j"}}</small></h6>
+        <a href="{% url 'anotheruser' blog.uname %}">{{ blog.uname|default:'anonymous' }}</a>
+        <tr>
+            <small class="form-text text-muted">titile:-</small>
+            <td>{{ blog.title|capfirst }}</td>
+        </tr>
+    </table>
+    <table class="table table-bordered table-responsive-sm">
+        <tr>
+            <small class="form-text text-muted">blog:-</small>
+            <td>{{ blog.text|capfirst }} </td>
+        </tr>
+    </table><br>
+
+    {% endfor %}
+</div>
+{% endblock content %}
